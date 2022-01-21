@@ -1,0 +1,41 @@
+body,html{
+  height: 100%;
+}
+
+.g_ruler_container{
+  position: fixed;
+  left: 0;
+  top:0;
+  z-index: 100000000000;
+  width: 100vw;
+  min-height: 100vh;
+
+  .ruler_line_column,.ruler_line_reverse-column{
+    position: absolute;
+    height: 100%;
+    width: 10px;
+    left: 0;
+    top:0;
+    background: #007aff;
+    transform: scaleX(0.5);
+  }
+  .ruler_line_reverse-column{
+    left: initial;
+    right: 0;
+  }
+
+  .ruler_line_row,.ruler_line_reverse-row{
+    top:0;
+    left: 0;
+    background: #007aff;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    transform: scaleY(0.5);
+
+  }
+  .ruler_line_reverse-row{
+    top: initial;
+    bottom: 0;
+  }
+}

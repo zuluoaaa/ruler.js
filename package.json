@@ -1,0 +1,27 @@
+{
+  "name": "ruler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuluoaaa/ruler.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuluoaaa/ruler.js/issues"
+  },
+  "homepage": "https://github.com/zuluoaaa/ruler.js#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "rollup-plugin-scss": "^3.0.0"
+  }
+}
