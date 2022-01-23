@@ -102,6 +102,7 @@ class Ruler {
                 mx = t.clientX;
                 my = t.clientY;
 
+           
                 if(!this.data.currentDirection){
                     this.data.currentDirection = checkDirection(sx,sy,mx,my);
                     if(!this.data.currentDirection){
@@ -111,7 +112,11 @@ class Ruler {
                     this.insertNewLine();
                 }
 
-                this.data.currentLine.updatePosition();
+                let dx = mx - sx;
+                let dy = my - sy;
+            
+         
+                this.data.currentLine.updatePosition(dx,dy);
 
             },
             end:(e)=>{

@@ -3,17 +3,15 @@ body,html{
 }
 
 .g_ruler_container{
-  position: fixed;
-  left: 0;
-  top:0;
-  z-index: 100000000000;
-  width: 100vw;
-  min-height: 100vh;
+
+
 
   .ruler_line_column,.ruler_line_reverse-column{
-    position: absolute;
+    position: fixed;
+    z-index: 100000000000;
+
     height: 100%;
-    width: 10px;
+    width: 4px;
     left: 0;
     top:0;
     background: #007aff;
@@ -25,11 +23,12 @@ body,html{
   }
 
   .ruler_line_row,.ruler_line_reverse-row{
+    position: fixed;
+    z-index: 100000000000;
     top:0;
     left: 0;
     background: #007aff;
-    position: absolute;
-    height: 1px;
+    height: 4px;
     width: 100%;
     transform: scaleY(0.5);
 

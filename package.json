@@ -22,6 +22,7 @@
   "homepage": "https://github.com/zuluoaaa/ruler.js#readme",
   "devDependencies": {},
   "dependencies": {
+    "rollup-plugin-sass": "^1.2.10",
     "rollup-plugin-scss": "^3.0.0"
   }
 }

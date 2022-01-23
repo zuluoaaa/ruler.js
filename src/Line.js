@@ -35,11 +35,23 @@ export default class Line{
         return this;
     }
 
-    updatePosition(x,y){
+    updatePosition(dx,dy){
+       let style;
         if(this.direction === "row"){
-
-        }else{
-
+            style = `scaleY(0.5) translate(0px, ${dy}px)`
         }
+        else if(this.direction === "reverse-row"){
+            style = `scaleY(0.5) translate(0px, ${dy}px)`
+        }
+        else if(this.direction === "column"){
+            style = `scaleX(0.5) translate(${dx}px, 0px)`
+        }
+        else if(this.direction === "reverse-column"){
+            style = `scaleX(0.5) translate(${dx}px, 0px)`
+        }else{
+            throw `Unknown line direction : ${this.direction}`
+        }
+
+        this.el.style.transform =style;
     }
 }
