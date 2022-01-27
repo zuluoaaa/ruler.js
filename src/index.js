@@ -1,7 +1,7 @@
 import { eventsInit } from "./events.js";
 import "./css/main.scss";
 import Line from "./Line";
-
+import ScanPage from "./scanPage";
 
 const MIN_DISTANCE = 50;
 
@@ -36,7 +36,10 @@ class Ruler {
 
         let el = document.createElement("div");
         el.className = "g_ruler_container";
-        document.body.appendChild(el);
+        el.setAttribute("id","rulerJs");
+
+        let html = document.getElementsByTagName("html")[0];
+        html.appendChild(el);
         
 
         const cacheKey = "_RULER_LINES";
@@ -69,10 +72,11 @@ class Ruler {
         
         this.init();
         this.render();
+        this.initScan();
+
     }
 
     init(){
-        console.log("init")
 
         let sx,sy,mx,my;
 
@@ -123,6 +127,13 @@ class Ruler {
                 if(!this.data.isDrawing){
                     return;
                 }
+                this.data.isDrawing = false;
+                let t = e.changedTouches[0];
+                mx = t.clientX;
+                my = t.clientY;
+
+
+
                 console.log(e.changedTouches[0],"end")
             }
         });
@@ -135,6 +146,10 @@ class Ruler {
         }).drawLine();
         this.data.lines.push(line);
         this.data.currentLine = line;
+    }
+
+    initScan(){
+        new ScanPage(document.getElementsByTagName("body")[0]);
     }
 
     render(){
