@@ -116,7 +116,7 @@ class Ruler {
                 let dy = my - sy;
             
          
-                this.data.currentLine.updatePosition(dx,dy);
+                this.data.currentLine.updatePosition(dx*2,dy*2);
 
             },
             end:(e)=>{
