@@ -1,17 +1,17 @@
+
+const MIN_DISTANCE = 50;
 let id = 0;
 
 export default class Line{
-    constructor({x=0,y=0,color="#007AFF",direction="cow",
-        parentNode=document.body,clickLine
+    constructor({x=0,y=0,color="#007AFF",direction="cow"
     }={}) {
         this.x = x;
         this.y = y;
         this.color = color;
         this.direction = direction;
 
-        this.parentNode = parentNode;
+
         this._id = (++id);
-        this.clickLine = clickLine;
     }
 
     toJSONObject(){
@@ -20,11 +20,12 @@ export default class Line{
             y:this.y,
             color:this.color,
             direction:this.direction,
-            _id:this._id
+            _id:this._id,
+            style:""
         }
     }
 
-    drawLine(){
+/*    drawLine(){
         if(!this.direction){
             throw "Line direction is not defined";
         }
@@ -33,10 +34,10 @@ export default class Line{
         this.el.addEventListener("click",this.clickLine);
         this.parentNode.appendChild(this.el);
         return this;
-    }
+    }*/
 
     updatePosition(dx,dy){
-       let style;
+        let style;
         if(this.direction === "row"){
             style = `scaleY(0.5) translate(0px, ${dy}px)`
         }
@@ -51,7 +52,31 @@ export default class Line{
         }else{
             throw `Unknown line direction : ${this.direction}`
         }
+        this.x = dx;
+        this.y = dy;
+        this.style = style;
+    }
+}
 
-        this.el.style.transform =style;
+export function checkDirection(sx,sy,mx,my){
+    let diffX = mx - sx;
+    let diffY = my - sy;
+
+    if(Math.abs(diffX) < MIN_DISTANCE && Math.abs(diffY) < MIN_DISTANCE){
+        return null;
+    }
+
+    if(Math.abs(diffX) > Math.abs(diffY)){
+        if(diffX > 0){
+            return "column"
+        }else{
+            return  "reverse-column"
+        }
+    }else{
+        if(diffY > 0){
+            return "row"
+        }else{
+            return "reverse-row"
+        }
     }
 }
